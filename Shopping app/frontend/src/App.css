@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+#acc-icon {
+  margin-left: 15px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#sign-div {
+  margin-left: 30px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.cardViewDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  box-sizing: border-box;
+  margin-left: 30px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card {
+  width: 15rem;
+  height: 18rem;
 }
-
-.App-link {
-  color: #61dafb;
+.cardViewSubHome {
+  margin-top: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.itemDesDiv {
+  display: grid;
+  grid-template-columns: 3fr 3fr;
+  box-sizing: border-box;
+}
+.itemName {
+  font-size: x-large;
+}
+.itemNameSub {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  box-sizing: border-box;
+}
+.itemImage {
+  width: 350px;
+}
+.buttonDiv {
+  display: grid;
+  grid-template-columns: 3fr 3fr;
+  box-sizing: border-box;
+}
+.itemDescriptionField {
+  height: 200px;
+}
+.AddressDiv {
+  display: grid;
+  grid-template-columns: 3fr 3fr;
+  box-sizing: border-box;
+}
+.AddressSub1 {
+  margin-left: 65px;
+  margin-right: 20px;
+}
+.AddText {
+  color: #800000;
+}
+.billingHr {
+  background-color: #4d0000;
+  height: 2px;
+}
+.OrderSum {
+  margin-left: 10px;
+  margin-right: 50px;
+}
+.itemImgBuy {
+  width: 60px;
+}
+.orderSumSub11 {
+  display: grid;
+  grid-template-columns: 1fr 8.5fr;
+  box-sizing: border-box;
+  margin-left: 50px;
 }
