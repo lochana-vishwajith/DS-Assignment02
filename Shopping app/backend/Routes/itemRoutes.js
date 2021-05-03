@@ -23,4 +23,13 @@ router.post('/', upload.single('itemImage') ,(req,res) => {
     })
 })
 
+router.get('/' , (req,res) => {
+
+    ItemDetails.find().then(items => {
+        res.json(items);
+    }).catch(err => {
+        console.log(err);
+    })
+})
+
 module.exports = router;
