@@ -3,6 +3,7 @@ const ItemDetails = require('../Models/itemModel');
 const multer = require('multer');
 
 
+
 const upload = multer({dest : 'uploads/'});
 
 router.post('/', upload.single('itemImage') ,(req,res) => {
@@ -28,6 +29,18 @@ router.get('/' , (req,res) => {
     ItemDetails.find().then(items => {
         res.json(items);
     }).catch(err => {
+        console.log(err);
+    })
+})
+
+router.get('/:id' , async (req,res) => {
+
+    let userId = req.params.id;
+ 
+    const items =  await ItemDetails.findById(userId).then((item)=> {
+        res.status(200).send({status : "data is fetched",item});
+        
+    }).catch((err) => {
         console.log(err);
     })
 })

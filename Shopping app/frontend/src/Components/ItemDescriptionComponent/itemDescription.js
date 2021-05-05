@@ -2,47 +2,57 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
 import TextField from '../TextViewComponent/textViewComponent';
-import Rolex from '../../Images/Rolex.jpeg';
 import Button from '../ButtonComponent/button';
+import axios from 'axios';
 
 export default class itemDescription extends Component {
 
-    state={
-        id : '',
-        title : '',
-        description : '',
-        price: ''
-
-    }
+    constructor(props){
+        super(props);
+        this.state = {
+            isLoaded:false,
+            Items : ""
+        };
+    }    
 
     componentDidMount(){
-        const{id} = this.props.match.params;
-        this.setState({
-            id: id,
+        
+        axios.get(`http://localhost:5000/itemDetails/${this.props.match.params.id}`)
+        .then(result => {
+            
+            console.log(result.data.item);
+            this.setState({isLoaded:true , Items : result.data.item});
+            
+        }).catch(err => {
+            console.log(err);
         })
     }
 
     render() {
-        return (
+        
+        return (<ul>
+            
             <div className="container">
+                
                 <div className="itemNameDiv">
+               
+                    <div className="itemNameSub" >
                     
-                    <div className="itemNameSub">
                         <div className="itemNameSub1">
-                            <img src={Rolex} className="itemImage"/>
+                            {/* <img src={this.state.item.image} className="itemImage"/> */}
                         </div>
                         <div className="itemNameSub2">
                             <br/>
                             <TextField
                                 id={"itemName"}
-                                label = {"Rolex Luxury Men's Stainless steel Wrist Watch Boys Fashion Watch New 2020 Men's Chain Watch"}
+                                label = {this.state.Items.title}
                                 className = {"itemName"}
                             />
                             <br/>
                             <div className="itemDescriptionField">
                                 <TextField
                                     id={"itemDes"}
-                                    label = {"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+                                    label = {this.state.Items.description}
                                     className = {"itemDes"}
                                 />
                             </div>                            
@@ -66,11 +76,14 @@ export default class itemDescription extends Component {
                             </div>
                         </div>
                     </div>
-                </div>  
+                
+                </div> 
+                
                 <div className="itemDesDiv">
 
-                </div>         
+                </div>
+                        
             </div>
-        )
-    }
+            </ul> )
+        }
 }

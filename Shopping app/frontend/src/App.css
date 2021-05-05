@@ -11,8 +11,8 @@
   margin-left: 30px;
 }
 .card {
-  width: 15rem;
-  height: 18rem;
+  width: 10rem;
+  height: 12rem;
 }
 .cardViewSubHome {
   margin-top: 10px;
@@ -69,4 +69,67 @@
   grid-template-columns: 1fr 8.5fr;
   box-sizing: border-box;
   margin-left: 50px;
+}
+
+.loginMainDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
+  margin-left: 25px;
+  margin-right: 10px;
+}
+#login {
+  margin-left: 220px;
+  width: 150px;
+}
+.loginText {
+  font-family: "Times New Roman", serif;
+  color: #800000;
+}
+.welcomeText {
+  font-family: "Times New Roman", serif;
+  font-size: 60px;
+  margin-left: 150px;
+}
+.welcomeNote {
+  margin-left: 210px;
+}
+.regText {
+  margin-left: 280px;
+}
+#reg {
+  margin-left: 290px;
+  width: 150px;
+  margin-top: 41px;
+}
+.container {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+.createAccText {
+  color: #800000;
+}
+.createAccHr {
+  background-color: #800000;
+  height: 0.6px;
+}
+#registerBtn {
+  width: 350px;
+  margin-left: 150px;
+  margin-top: 40px;
+}
+.createAccMainDiv {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  box-sizing: border-box;
+}
+.logoReg {
+  width: 300px;
+  margin-left: 65px;
+}
+.hLogo {
+  width: 50px;
+}
+#hTopic {
+  margin-left: 10px;
 }

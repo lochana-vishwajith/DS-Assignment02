@@ -29,6 +29,11 @@ connection.once("open", ()=>{
 const itemDetails = require('./Routes/itemRoutes');
 app.use("/itemDetails", itemDetails);
 
+const userDetails = require('./Routes/UserRegisteRotes');
+app.use("/userDetails", userDetails);
+
+
+
 app.listen(port,()=>{
     console.log("Connected to port");
 });

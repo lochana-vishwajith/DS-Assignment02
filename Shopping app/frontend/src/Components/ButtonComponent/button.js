@@ -5,10 +5,11 @@ const buttonCom = ({
     id,
     value,
     classname,
-    type
+    type,
+    onSubmit
 }) => {
     return(
-        <button type={type} className={classname} id= {id}>{value}</button>
+        <button type={type} className={classname} id= {id} onClick = {onSubmit}>{value}</button>
     )
 }
 
@@ -16,7 +17,8 @@ buttonCom.prototype = {
     id : PropTypes.string.isRequired,
     value : PropTypes.string.isRequired,
     classname : PropTypes.string.isRequired,
-    type : PropTypes.string.isRequired
+    type : PropTypes.string.isRequired,
+    onSubmit : PropTypes.func
 }
 
 export default buttonCom;
