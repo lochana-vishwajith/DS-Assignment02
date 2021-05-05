@@ -1,35 +1,45 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Component, createContext } from 'react';
+import React, {  createContext,useReducer } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 
 import Header from './Components/HeaderComponent/headerComponent';
 import Home from './Components/HomeComponent/home';
 import itemDescription from './Components/ItemDescriptionComponent/itemDescription';
 import ItemBuy from './Components/ItemBuyComponent/itemBuy';
-import Login from './Components/loginComponent/login';
+import LoginCom from './Components/loginComponent/Login';
 import Register from './Components/RegisterComponent/register';
 
-class App extends Component {
+import { initialState , reducer} from '../src/Reducer/UseReducer';
+
+export const UserContext = createContext();
+
+
+function App  ()   {
   
-  render(){
+
+
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
 
       <div className="App">
+        <UserContext.Provider value ={{state, dispatch}}>
         <Router>
-          
-            <Header/>
-              <Route exact path="/" component={Home}/>
-              <Route exact path="/itemDescription/:id" component={itemDescription}/>
-              <Route exact path="/itemBuy" component={ItemBuy}/>
-              <Route exact path="/login" component={Login}/>
-              <Route exact path="/register" component={Register}/>
-          
+          <Header/>
+          <Switch>      
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/itemDescription/:id" component={itemDescription}/>
+            <Route exact path="/itemBuy" component={ItemBuy}/>
+            <Route exact path="/login" component={LoginCom}/>
+            <Route exact path="/register" component={Register}/>
+          </Switch>
         </Router>
+          
+        </UserContext.Provider>
       </div>
     );
-  }
+  
  
 } 
 

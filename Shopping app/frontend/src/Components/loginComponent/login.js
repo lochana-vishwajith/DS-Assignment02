@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import React, { useContext,  useState } from 'react';
+import {Link, useHistory} from 'react-router-dom';
 
 import TextInput from '../TextInputComponent/textInputComponent';
 import Button from '../ButtonComponent/button';
@@ -7,49 +7,39 @@ import TextView from '../TextViewComponent/textViewComponent';
 import axios from 'axios';
 
 
-//import {UserContext} from '../../App';
+import {UserContext} from '../../App';
 
-// const {state, dispatch} = useContext(UserContext);
 
-class login extends Component {
+function Login() {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            email : '',
-            password : ''
-        }
-    }    
+    const {state, dispatch} = useContext(UserContext);
 
-    handlerChange = (e) =>{
-		this.setState({[e.target.name] : e.target.value})
-	}
+    const history = useHistory();
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')   
 
-    handlerSubmit = async (e) => {
+
+   function handlerSubmit (e)  {
         e.preventDefault();
 
         const loginDetails = {
-            email : this.state.email,
-            password : this.state.password
+            email, 
+            password 
         }
 
         axios.post(`http://localhost:5000/userDetails/login` , loginDetails).then(res => {
             console.log(res.status);
             if(res.status === 200){
-                //dispatch({type : "USER", payload : true});
+                dispatch({type : "USER", payload : true});
                 alert("Login Successfull");
-                this.props.history.push('/');
+                history.push('/');
             } 
             
         })
 
-         this.setState({
-            email : '',
-            password : ''
-         })
+        
     }
-
-    render() {
+   
         return (
             <div className = "container">
                 <div className = "loginMainDiv">
@@ -60,21 +50,25 @@ class login extends Component {
                             name = {"email"}
                             textFeildName = {"Username/Email"}
                             placeholder = {"abc@gmailcom"}
-                            onChange = {this.handlerChange}
+                            onChange = {e => {
+                                setEmail(e.target.value);
+                            }}
                         /><br/>
                         <TextInput 
                             type ={"password"}
                             name = {"password"}
                             textFeildName = {"Password"}
                             placeholder = {"********"}
-                            onChange = {this.handlerChange}
+                            onChange = {e => {
+                                setPassword(e.target.value);
+                            }}
                         /><br/>
                         <Button
                             id ={"login"}
                             value = {"Login"}
                             classname = {"btn btn-secondary btn-lg"}
                             type = {"submit"}
-                            onSubmit = {this.handlerSubmit}
+                            onSubmit = {handlerSubmit}
                         />
                     </div>
                     <div className="loginsubDiv2">
@@ -103,6 +97,6 @@ class login extends Component {
                 </div>
             </div>
         )
-    }
+    
 }
-export default login;
+export default Login;
