@@ -9,7 +9,6 @@ import axios from 'axios';
 
 import {UserContext} from '../../App';
 
-
 function Login() {
 
     const {state, dispatch} = useContext(UserContext);
@@ -28,10 +27,11 @@ function Login() {
         }
 
         axios.post(`http://localhost:5000/userDetails/login` , loginDetails).then(res => {
-            console.log(res.status);
+            console.log(res.data.id);
+            localStorage.setItem("UserID", res.data.id);
             if(res.status === 200){
                 dispatch({type : "USER", payload : true});
-                alert("Login Successfull");
+                alert("Login Successfull");                
                 history.push('/');
             } 
             

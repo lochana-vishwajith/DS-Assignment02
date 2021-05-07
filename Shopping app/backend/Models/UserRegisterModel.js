@@ -28,6 +28,30 @@ const userDetailsSchema = new Schema({
             }
         }
         
+    ], 
+    cart : [
+        {
+            // userId : {
+            //     type : String,
+            //     required : true
+            // },
+            productId : {
+                type : String,
+                required : true
+            },
+            title : {
+                type : String,
+                required : true
+            },
+            price : {
+                type : String,
+                required : true
+            },
+            qty : {
+                type : String,
+                required : true
+            }
+        }
     ]
 
 })

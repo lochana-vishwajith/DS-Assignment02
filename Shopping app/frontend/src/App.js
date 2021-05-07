@@ -9,6 +9,7 @@ import itemDescription from './Components/ItemDescriptionComponent/itemDescripti
 import ItemBuy from './Components/ItemBuyComponent/itemBuy';
 import LoginCom from './Components/loginComponent/Login';
 import Register from './Components/RegisterComponent/register';
+import Cart from './Components/CartComponent/cart';
 
 import { initialState , reducer} from '../src/Reducer/UseReducer';
 
@@ -33,6 +34,7 @@ function App  ()   {
             <Route exact path="/itemBuy" component={ItemBuy}/>
             <Route exact path="/login" component={LoginCom}/>
             <Route exact path="/register" component={Register}/>
+            <Route exact path="/cart" component={Cart}/>
           </Switch>
         </Router>
           

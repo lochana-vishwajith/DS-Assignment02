@@ -13,38 +13,31 @@ export default function HeaderComponent () {
             return(
                 <>
                     <li className="nav-item">
-                                <Link className="nav-link" to="/"><i className ="fas fa-home" id="acc-icon"/><p>Home</p></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/"><i className ="fas fa-cart-plus" id="cart-icon"/><p>Cart</p></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/"><i className ="fas fa-user-circle" id="acc-icon"/><p>Account</p></Link>
-                            </li>
-                           
-                            <li className="nav-item" >
-                                <Link className="nav-link" to="/logout"><i className ="fas fa-sign-out-alt" id="acc-icon"/><p>Log-out</p></Link>
-                            </li>
+                        <Link className="nav-link" to="/"><i className ="fas fa-home" id="acc-icon"/><p>Home</p></Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/cart"><i className ="fas fa-cart-plus" id="cart-icon"/><p>Cart</p></Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/"><i className ="fas fa-user-circle" id="acc-icon"/><p>Account</p></Link>
+                    </li>
+                    <li className="nav-item" >
+                        <Link className="nav-link" to="/logout"><i className ="fas fa-sign-out-alt" id="acc-icon"/><p>Log-out</p></Link>
+                    </li>
                 </>
             )
         }else{
             return(
                 <>
                     <li className="nav-item">
-                                <Link className="nav-link" to="/"><i className ="fas fa-home" id="acc-icon"/><p>Home</p></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/"><i className ="fas fa-cart-plus" id="cart-icon"/><p>Cart</p></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/"><i className ="fas fa-user-circle" id="acc-icon"/><p>Account</p></Link>
-                            </li>
-                            <li className="nav-item" id="sign-div">
-                                <Link className="nav-link" to="/login"><i className ="fas fa-sign-in-alt" id="acc-icon"/><p>Login</p></Link>
-                            </li>
-                            <li className="nav-item" >
-                                <Link className="nav-link" to="/register"><i className ="fas fa-registered" id="acc-icon"/><p>Register</p></Link>
-                            </li>
+                        <Link className="nav-link" to="/"><i className ="fas fa-home" id="acc-icon"/><p>Home</p></Link>
+                    </li>
+                    <li className="nav-item" id="sign-div">
+                        <Link className="nav-link" to="/login"><i className ="fas fa-sign-in-alt" id="acc-icon"/><p>Login</p></Link>
+                    </li>
+                    <li className="nav-item" >
+                        <Link className="nav-link" to="/register"><i className ="fas fa-registered" id="acc-icon"/><p>Register</p></Link>
+                    </li>
                 </>
             )
         }

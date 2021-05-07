@@ -32,8 +32,6 @@ app.use("/itemDetails", itemDetails);
 const userDetails = require('./Routes/UserRegisteRotes');
 app.use("/userDetails", userDetails);
 
-
-
 app.listen(port,()=>{
     console.log("Connected to port");
 });

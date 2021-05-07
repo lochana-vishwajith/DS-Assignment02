@@ -133,3 +133,15 @@
 #hTopic {
   margin-left: 10px;
 }
+#cartCard {
+  width: 1000px;
+  height: auto;
+}
+#cartDivMain {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  box-sizing: border-box;
+}
+#del {
+  margin-right: 140px;
+}
