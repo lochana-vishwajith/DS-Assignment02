@@ -13,7 +13,29 @@ export default class itemDescription extends Component {
             isLoaded:false,
             Items : ""
         };
-    }    
+    }
+    
+    handlerChange = (e) => {
+        this.setState({[e.target.name ]: e.target.value});
+    }
+
+    onButtonSubmit = (e) => {
+        e.preventDefault();
+
+        const addItemCart = {
+           productId : this.state.Items._id,
+           title : this.state.Items.title,
+           price : this.state.Items.price
+        }
+
+        const userId = localStorage.getItem("UserID");
+
+        axios.put(`http://localhost:5000/userDetails/${userId}` , addItemCart).then(res => {
+            alert("Item is added");
+        }).catch(err => {
+            console.log(err)
+        })
+    }
 
     componentDidMount(){
         
@@ -47,6 +69,7 @@ export default class itemDescription extends Component {
                                 id={"itemName"}
                                 label = {this.state.Items.title}
                                 className = {"itemName"}
+                                
                             />
                             <br/>
                             <div className="itemDescriptionField">
@@ -58,7 +81,7 @@ export default class itemDescription extends Component {
                             </div>                            
                             <div className="buttonDiv">
                                 <div className="buttonDivSub1">
-                                    <Link to="/itemBuy"><Button
+                                    <Link to={`/itemBuy/${this.props.match.params.id}`}><Button
                                         id={"buyNowBtn"}
                                         value ={"Buy Now"}
                                         classname={"btn btn-outline-danger"}
@@ -71,6 +94,7 @@ export default class itemDescription extends Component {
                                         value ={"Add To Cart"}
                                         classname={"btn btn-outline-warning"}
                                         type = {"button"}
+                                        onSubmit={this.onButtonSubmit}
                                     /></Link>
                                 </div>
                             </div>

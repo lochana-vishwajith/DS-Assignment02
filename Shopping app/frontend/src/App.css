@@ -145,3 +145,12 @@
 #del {
   margin-right: 140px;
 }
+#billingSub {
+  margin-left: 210px;
+  margin-top: 20px;
+}
+.PriceTot {
+  display: grid;
+  grid-template-columns: 5.4fr 1fr;
+  box-sizing: border-box;
+}

@@ -18,39 +18,45 @@ class cart extends Component {
 
         axios.get(`http://localhost:5000/userDetails/getCart/${id}`).then((res) => {
             console.log(res);
-            this.setState({cartItems : res.data})
+            this.setState({cartItems : res.data.cartItems})
         }).catch(err => {
             console.log(err);
         })
     }
 
     render() {
+        const {cartItems}= this.state;
         return (
-            <div className="container">
-                <div id="cartCard" className="card">
-                    <div className="card-header" id="cartDivMain">
-                        <div>
-                            <h5>Featured</h5>
+          
+            <div className="container">                
+                    {cartItems.map(cartitem => (
+                        <div id="cartCard" className="card" key = {cartitem._id}>
+                            <div className="card-header" id="cartDivMain">
+                            <div>
+                                <h5>{cartitem.title}</h5>
+                            </div>
+                            <div>
+                                <i id="del" className ="fas fa-times" style={{cursor:'pointer',float:'right',color:'red'}} ></i>             
+                            </div>
                         </div>
-                        <div>
-                            <i id="del" className ="fas fa-times" style={{cursor:'pointer',float:'right',color:'red'}} ></i>             
+                        <div className="card-body" id="cartDivMain">
+                            <div className="cartsub1">
+                                <p className="card-text">Price : RS. {cartitem.price}</p>
+                            </div>
+                            <div className="cartsub1">
+                                <Link to ={`/itemDescription/${cartitem.productId}`}><Button
+                                    id = {"goDes"}
+                                    value = {"Show More"}
+                                    classname= {"btn btn-outline-danger"}
+                                    type= {"submit"}
+                                /></Link>
+                            </div>         
+                          
                         </div>
-                    </div>
-                    <div className="card-body" id="cartDivMain">
-                        <div className="cartsub1">
-                            <p className="card-text">Price : </p>
-                        </div>
-                        <div className="cartsub1">
-                            <Link to ="/itemDescription"><Button
-                                id = {"goDes"}
-                                value = {"Show More"}
-                                classname= {"btn btn-outline-danger"}
-                                type= {"submit"}
-                            /></Link>
-                        </div>         
-                      
-                    </div>
-                </div>               
+                    </div> 
+                        
+                    ))}
+                              
             </div>
         )
     }

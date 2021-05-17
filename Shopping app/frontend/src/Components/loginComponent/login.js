@@ -28,6 +28,7 @@ function Login() {
 
         axios.post(`http://localhost:5000/userDetails/login` , loginDetails).then(res => {
             console.log(res.data.id);
+            console.log(res.status)
             localStorage.setItem("UserID", res.data.id);
             if(res.status === 200){
                 dispatch({type : "USER", payload : true});

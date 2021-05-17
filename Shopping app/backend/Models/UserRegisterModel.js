@@ -31,10 +31,7 @@ const userDetailsSchema = new Schema({
     ], 
     cart : [
         {
-            // userId : {
-            //     type : String,
-            //     required : true
-            // },
+          
             productId : {
                 type : String,
                 required : true
@@ -46,11 +43,8 @@ const userDetailsSchema = new Schema({
             price : {
                 type : String,
                 required : true
-            },
-            qty : {
-                type : String,
-                required : true
             }
+            
         }
     ]
 

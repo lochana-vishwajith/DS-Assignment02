@@ -7,6 +7,7 @@ const textInput = ({
     textFeildName,
     placeholder,
     name,
+    value,
     onChange
 }) => {
     return(
@@ -14,7 +15,7 @@ const textInput = ({
             <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm"><b>{textFeildName}</b></span>
         </div>
-        <input type={type} class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder={placeholder} name={name} onChange={onChange}/>
+        <input type={type} class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder={placeholder} name={name} value = {value} onChange={onChange}/>
         </div>
     )
 }
@@ -24,6 +25,7 @@ textInput.prototype ={
     textFeildName : PropTypes.string.isRequired,
     placeholder : PropTypes.string.isRequired,
     name : PropTypes.string,
+    value : PropTypes.string,
     onChange : PropTypes.func
 }
 

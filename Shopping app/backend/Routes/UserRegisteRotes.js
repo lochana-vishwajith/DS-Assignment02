@@ -29,11 +29,11 @@ router.post('/login',async (req,res) => {
 
     const login = await userDetails.findOne({email : email});
 
-    console.log(login);
+    
     const isMatch = await bcrypt.compare(password , login.password);
 
     const token = await login.generateAuthToken();
-    console.log(token);
+    
 
     res.cookie("JWTToken", token , {
         expires : new Date(Date.now() + 25892000000),
@@ -44,7 +44,7 @@ router.post('/login',async (req,res) => {
         console.log("Password is inncorrect")
     }
 
-    if(!login){
+    else if(!login){
         res.json({error : "Login Failed"});
     }
     else {
@@ -52,12 +52,13 @@ router.post('/login',async (req,res) => {
     }
 })
 
+//add to cart
 router.put('/:id' , async (req,res) => {
 
     let userId = req.params.id;
     console.log(userId);
 
-    const {productId,title,price,qty} = req.body;
+    const {productId,title,price} = req.body;
 
     console.log("pid" + productId);
 
@@ -72,7 +73,6 @@ router.put('/:id' , async (req,res) => {
     const isAdded = cart.find(c => c.productId == productId);
     const item = {
         productId,
-        qty : isAdded ? isAdded.qty + req.body.qty : req.body.qty,
         title : title,
         price : price
     }
@@ -122,23 +122,6 @@ router.get('/' , async (req,res) => {
     })
 })
 
-// router.get('/:email' , async (req,res) => {
-   
-//     let userMail = req.params.email;
-//     console.log(userMail)
-//     const customer = await userDetails.findOne({email : userMail})
-    
-//     .then((customer) => {
-//         const customerId = customer._id
-//         console.log(customer._id)
-//         res.status(200).send({status : "Customer fetched", customerId})
-        
-//     }).catch((err) => {
-//         console.log(err.message);
-//         res.send({status : "error" , error: err.message})
-//     })
-// })
-
 router.get('/getCart/:id' , async (req,res) => {
    
     let userId = req.params.id;
@@ -153,6 +136,12 @@ router.get('/getCart/:id' , async (req,res) => {
         console.log(err.message);
         res.send({status : "error" , error: err.message})
     })
+})
+
+router.delete('/:id' , async (res,req) => {
+    let userId = req.params.id;
+
+    await userDetails.cart.findByIdAndDelete(userId).then()
 })
 
 module.exports = router;
