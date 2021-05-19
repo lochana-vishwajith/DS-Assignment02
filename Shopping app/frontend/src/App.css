@@ -151,6 +151,14 @@
 }
 .PriceTot {
   display: grid;
-  grid-template-columns: 5.4fr 1fr;
+  grid-template-columns: 3.6fr 2fr;
+  box-sizing: border-box;
+}
+.proceedBtn {
+  margin-top: 2px;
+}
+.dilBtnG {
+  display: grid;
+  grid-template-columns: 23fr 2fr;
   box-sizing: border-box;
 }

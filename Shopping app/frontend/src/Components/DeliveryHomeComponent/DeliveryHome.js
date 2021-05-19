@@ -1,18 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import DHeader from '../DeliveryHeaderComponent/DeliveryHeader'
 
-export default class home extends Component {
-  state = {
-    name: "",
-    address: "",
-    price: 0,
-  };
+class DeliveryHome extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: "",
+      address: "",
+      price: 0,
+      total : 0,
+      itemP: ''
+    }
+  }
+  
 
   onChange = (e) =>
     this.setState({
       [e.target.name]: e.target.value,
     });
+
+  
+  componentDidMount(){
+    
+    this.setState({itemP : Number(this.props.match.params.id)});
+   }
+
+   calcTotal = (p) => {
+
+      this.setState({total : Number(this.state.price + this.state.itemP)})
+
+   }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -23,28 +42,28 @@ export default class home extends Component {
       address: this.state.address,
     };
 
-    // axios.post(`http://localhost:5000/deliverDetails`, details).then((res) => {
-    //   alert("Delivary details added...");
-    // }).catch(error=>{
-    // console.log(error);
-    // });
-
+  
     axios
       .get(`http://localhost:5000/locationDetails/${this.state.address}`)
       .then((res) => {
         console.log(res.data);
         // this.state.price = res.price;
         this.setState({
-          price: res.data.price,
+          price: Number(res.data.price),
         });
         console.log(res.price);
+        this.calcTotal(res.data.price)
       });
+
+      
   };
 
   render() {
     const { name, address, price } = this.state;
     return (
+     
       <div className="container">
+         <DHeader/>
         <h2 className="mt-2">Delivary information</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -69,14 +88,25 @@ export default class home extends Component {
               onChange={this.onChange}
             ></input>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Add
-          </button>
+          <div className="dilBtnG">
+            <div>
+              <button type="submit" className="btn btn-primary">
+                Add
+              </button>
+            </div>
+            <div>
+              <button type="submit" className="btn btn-primary">
+                Pay Now
+              </button>
+            </div>
+          </div>
         </form>
         <div className="mt-4">
-          <label>Delivary Cost: {price}</label>
+          <label>Delivary Cost: {price}</label><br/>
+          <label>Total Price: {this.state.total}</label>
         </div>
       </div>
     );
   }
 }
+export default DeliveryHome;

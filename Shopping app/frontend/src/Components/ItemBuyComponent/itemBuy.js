@@ -5,6 +5,7 @@ import TextInput from '../TextInputComponent/textInputComponent';
 import image from '../../Images/Rolex.jpeg';
 import TextView from '../TextViewComponent/textViewComponent';
 import Button from '../ButtonComponent/button';
+import { Link } from 'react-router-dom';
 
 class itemBuy extends Component {
     constructor(props){
@@ -169,13 +170,14 @@ class itemBuy extends Component {
                             <p className="warnin"><small>*press space to calculate the total</small></p>
                         </div>
                         <div className="PriceTot">
-                            <div><h3>Price : Rs.{this.state.price}</h3></div>
-                            <div><Button
+                            <div><h3>Price : Rs. {this.state.price}</h3></div>
+                            <div>
+                                <Link to ={`/delivery/${this.state.price}`}><Button
                                 id ={"proceed"}
                                 value ={"PROCEED"}
                                 classname = {"btn btn-outline-danger"}
                                 type={"submit"}
-                            /></div>
+                            /></Link></div>
                             
                         </div>
                         

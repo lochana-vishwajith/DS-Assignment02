@@ -16,9 +16,8 @@ import LoginCom from "./Components/loginComponent/Login";
 import Register from "./Components/RegisterComponent/register";
 import Cart from "./Components/CartComponent/cart";
 //------------IT18014396
-import DeliveryHeader from "./components/DeliveryHeaderComponent/header";
-import DeliveryFooter from "./components/DeliveryFooterComponent/footer";
-import DeliveryHome from "./components/DeliveryHomeComponent/home";
+
+import DeliveryHome from "./Components/DeliveryHomeComponent/DeliveryHome";
 //----------------------
 
 import { initialState, reducer } from "../src/Reducer/UseReducer";
@@ -35,16 +34,12 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route
-              exact
-              path="/itemDescription/:id"
-              component={itemDescription}
-            />
+            <Route exact path="/itemDescription/:id" component={itemDescription}/>
             <Route exact path="/itemBuy/:id" component={ItemBuy} />
             <Route exact path="/login" component={LoginCom} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/cart" component={Cart} />
-            <Route to="/:id" component={DeliveryHome} />
+            <Route exact path="/delivery/:id" component={DeliveryHome} />
           </Switch>
         </Router>
       </UserContext.Provider>
