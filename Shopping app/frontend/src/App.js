@@ -22,7 +22,7 @@ import DeliveryHome from "./Components/DeliveryHomeComponent/DeliveryHome";
 
 import SellerHome from "./Components/SellerHome/SellerHome";
 import SellerAddNewItem from "./Components/SellerAddItemComponent/AddNewItem";
-import SellerView from "./Components/SellerView";
+import SellerView from "./Components/SellerView/SellerViewComponent";
 import SellerDeleteItem from "./Components/SellerDeleteItemComponent/SellerDeleteItem";
 
 //////////////////////////
@@ -52,7 +52,7 @@ function App() {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/delivery/:id" component={DeliveryHome} />
 
-            <Route exact path="/" component={SellerHome} />
+            <Route exact path="/sellerhome" component={SellerHome} />
             <Route path="/AddNewItem" component={SellerAddNewItem} />
             <Route path="/ViewList" component={SellerView} />
             <Route path="/DeleteItem" component={SellerDeleteItem} />

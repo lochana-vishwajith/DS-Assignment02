@@ -2,19 +2,17 @@ const router = require('express').Router();
 const ItemDetails = require('../Models/itemModel');
 const multer = require('multer');
 
-
-
 const upload = multer({dest : 'uploads/'});
 
-router.post('/', upload.single('itemImage') ,(req,res) => {
+router.post('/' ,(req,res) => {
    
     const {title , description, price} = req.body;
     
     const newItem = new ItemDetails({
         title,
         description,
-        price,
-        image : req.file.path
+        price
+        
     })
 
     newItem.save().then(()=>{
@@ -44,5 +42,18 @@ router.get('/:id' , async (req,res) => {
         console.log(err);
     })
 })
+
+//delete items
+// app.delete("/:id", async (req, res) => {
+//     try {
+//       let id = req.params.id;
+//       console.log("id eka ko" + id);
+//       const item = await Item.findById(id);
+//       const a1 = await item.remove();
+//       res.json(a1);
+//     } catch (e) {
+//       res.send("error = " + e);
+//     }
+//   });
 
 module.exports = router;

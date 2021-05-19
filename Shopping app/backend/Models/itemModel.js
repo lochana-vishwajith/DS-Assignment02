@@ -16,7 +16,7 @@ const itemDetailsSchema = new Schema({
     },
     image : {
         type : String,
-        required : true
+       
     }
 })
 

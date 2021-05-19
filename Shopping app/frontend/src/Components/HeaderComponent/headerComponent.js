@@ -38,6 +38,9 @@ export default function HeaderComponent () {
                     <li className="nav-item" >
                         <Link className="nav-link" to="/register"><i className ="fas fa-registered" id="acc-icon"/><p>Register</p></Link>
                     </li>
+                    <li className="nav-item" >
+                        <Link className="nav-link" to="/sellerhome"><i className ="fas fa-sellsy" id="acc-icon"/><p>Seller Profile</p></Link>
+                    </li>
                 </>
             )
         }

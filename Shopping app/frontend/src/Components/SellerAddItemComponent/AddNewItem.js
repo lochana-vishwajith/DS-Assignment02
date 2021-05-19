@@ -3,18 +3,18 @@ import { Container, Form, Button } from "react-bootstrap";
 import Axios from "axios";
 
 function AddNewItem() {
-  const [name, setItemName] = useState("");
+  const [title, setItemName] = useState("");
   const [price, setItemPrice] = useState("");
   const [description, setDescription] = useState("");
 
   function btnsub(e) {
     e.preventDefault();
     const itemDetails = {
-      name,
+      title,
       price,
       description,
     };
-    Axios.post(`http://localhost:9000/addnewitem`, itemDetails)
+    Axios.post(`http://localhost:5000/itemDetails`, itemDetails)
       .then((res) => {
         console.log(res.data);
         alert("Entered successfully !");
