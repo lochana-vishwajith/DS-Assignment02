@@ -1,8 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
@@ -15,26 +15,32 @@ const port = process.env.PORT || 5000;
 const Mongo_url = process.env.SHOPPING_MONGO_DB;
 
 mongoose.connect(Mongo_url, {
-    useCreateIndex:true,
-    useNewUrlParser:true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-})
-
-const connection = mongoose.connection;
-connection.once("open", ()=>{
-    console.log("Mongo DB connected..!!")
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
-const itemDetails = require('./Routes/itemRoutes');
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Mongo DB connected..!!");
+});
+
+const itemDetails = require("./Routes/itemRoutes");
 app.use("/itemDetails", itemDetails);
 
-const userDetails = require('./Routes/UserRegisteRotes');
+const userDetails = require("./Routes/UserRegisteRotes");
 app.use("/userDetails", userDetails);
 
-const BillingDetails = require('./Routes/billingDetailsRoutes');
+const BillingDetails = require("./Routes/billingDetailsRoutes");
 app.use("/billingDetails", BillingDetails);
 
-app.listen(port,()=>{
-    console.log("Connected to port");
+const deliverDetails = require("./Routes/deliverRoute");
+app.use("/deliverDetails", deliverDetails);
+
+const locationDetails = require("./Routes/locationRoute");
+app.use("/locationDetails", locationDetails);
+
+app.listen(port, () => {
+  console.log("Connected to port");
 });
