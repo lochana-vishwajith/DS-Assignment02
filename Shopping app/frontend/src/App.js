@@ -20,6 +20,13 @@ import Cart from "./Components/CartComponent/cart";
 import DeliveryHome from "./Components/DeliveryHomeComponent/DeliveryHome";
 //----------------------
 
+import SellerHome from "./Components/SellerHome/SellerHome";
+import SellerAddNewItem from "./Components/SellerAddItemComponent/AddNewItem";
+import SellerView from "./Components/SellerView";
+import SellerDeleteItem from "./Components/SellerDeleteItemComponent/SellerDeleteItem";
+
+//////////////////////////
+
 import { initialState, reducer } from "../src/Reducer/UseReducer";
 
 export const UserContext = createContext();
@@ -34,12 +41,21 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/itemDescription/:id" component={itemDescription}/>
+            <Route
+              exact
+              path="/itemDescription/:id"
+              component={itemDescription}
+            />
             <Route exact path="/itemBuy/:id" component={ItemBuy} />
             <Route exact path="/login" component={LoginCom} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/delivery/:id" component={DeliveryHome} />
+
+            <Route exact path="/" component={SellerHome} />
+            <Route path="/AddNewItem" component={SellerAddNewItem} />
+            <Route path="/ViewList" component={SellerView} />
+            <Route path="/DeleteItem" component={SellerDeleteItem} />
           </Switch>
         </Router>
       </UserContext.Provider>
