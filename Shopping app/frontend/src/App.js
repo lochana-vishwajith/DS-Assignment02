@@ -8,6 +8,15 @@ import {
   Switch,
 } from "react-router-dom";
 
+//--------Payment API
+
+import PaymentHeader from './Components/HeaderComponent/header';  
+import PaymentHome from './Components/PaymentHomeComponent/PaymentHome';
+import Success from './Components/PaymentHomeComponent/Success';
+import Payed from './Components/PaymentHomeComponent/Payed'
+
+
+//-------------------
 import Header from "./Components/HeaderComponent/headerComponent";
 import Home from "./Components/HomeComponent/home";
 import itemDescription from "./Components/ItemDescriptionComponent/itemDescription";
@@ -45,6 +54,11 @@ function App() {
             <Route exact path="/register" component={Register} />
             <Route exact path="/cart" component={Cart} />
             <Route to="/:id" component={DeliveryHome} />
+
+            <Route exact path="/" component={PaymentHome}/>
+            <Route exact path= "/Success/:method" component={Success}/>
+            <Route exact path = "/Payed" component={Payed}/>
+            
           </Switch>
         </Router>
       </UserContext.Provider>

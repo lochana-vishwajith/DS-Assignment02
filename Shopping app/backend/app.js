@@ -26,6 +26,8 @@ connection.once("open", () => {
   console.log("Mongo DB connected..!!");
 });
 
+
+
 const itemDetails = require("./Routes/itemRoutes");
 app.use("/itemDetails", itemDetails);
 
@@ -40,6 +42,8 @@ app.use("/deliverDetails", deliverDetails);
 
 const locationDetails = require("./Routes/locationRoute");
 app.use("/locationDetails", locationDetails);
+//Route for the Payment Routes
+app.use('/Payments',payment);
 
 app.listen(port, () => {
   console.log("Connected to port");
