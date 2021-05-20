@@ -42,8 +42,7 @@ app.use("/deliverDetails", deliverDetails);
 
 const locationDetails = require("./Routes/locationRoute");
 app.use("/locationDetails", locationDetails);
-//Route for the Payment Routes
-app.use('/Payments',payment);
+
 
 app.listen(port, () => {
   console.log("Connected to port");
